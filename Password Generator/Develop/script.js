@@ -56,7 +56,7 @@ const password = generatePassword (
 //}
 
  //Add event listener to generate button
-//generateBtn.addEventListener("click", generatePassword);
+generateBtn.addEventListener("click", generatePassword);
 
 // Function to generate password base on user based criteria
 //function generatePassword() {
