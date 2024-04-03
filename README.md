@@ -1,4 +1,5 @@
 # Challenge3
+<img width="927" alt="Screenshot 2024-04-02 at 9 44 18 PM" src="https://github.com/jmartincampos/Challenge3/assets/148412757/6ee16f4b-4d68-4640-a715-8fe022cbd25a">
 
 # Password Generator Starter Code
 This week's Challenge requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
