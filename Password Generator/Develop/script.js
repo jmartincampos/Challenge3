@@ -37,3 +37,19 @@ var includeLowercase = confirm("Include lowercase characters?");
 var includeUppercase = confirm("Include uppercase characters?");
 var includeNumeric = confirm("Include numeric characters?");
 var includeSpecial = confirm("Include special characters?");
+
+//Combine selected character types
+var chars = "";
+if (includeLowercase) chars += lowercaseChars;
+if (includeUppercase) chars += uppercaseChars;
+if (includeNumeric) chars += numericChars;
+if (specialChars) chars += specialChars;
+
+//Generate password
+var password = "";
+for (var i=0; i < passwordLength; i++) {
+  var randomIndex = Math.floor(Math.random () * chars.length);
+  password += chars(randomIndex);
+}
+
+return password;
