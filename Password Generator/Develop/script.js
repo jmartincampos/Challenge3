@@ -8,21 +8,21 @@ function generatePassword(length, includeLowercase, includeUppercase, includeNum
   let allowedChars = "";
   let password = "";
 
-  allowedChars += includeLowercase ? lowercaseChars: "";
-  allowedChars += includeUppercase ? uppercaseChars: "";
-  allowedChars += includeNumeric ? numericChars: "";
-  allowedChars += includeSpecial ? specialChars: "";
+  allowedChars += includeLowercase ? lowercaseChars : "";
+  allowedChars += includeUppercase ? uppercaseChars : "";
+  allowedChars += includeNumeric ? numericChars : "";
+  allowedChars += includeSpecial ? specialChars : "";
 
-  if(length <= 0) {
-      return ("password length must be at least 1");
+  if (length <= 0) {
+      return "Password length must be at least 1";
   }
   if (allowedChars.length === 0) {
-      return ('At least 1 set of character needs to be selected');
+      return "At least 1 set of characters needs to be selected";
   }
 
-  for (let i = 0; i < length; i++){
+  for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * allowedChars.length);
-      password += allowedChars(randomIndex);
+      password += allowedChars[randomIndex];
   }
   return password;
 }
@@ -30,37 +30,24 @@ function generatePassword(length, includeLowercase, includeUppercase, includeNum
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  var length = parseInt(prompt("Password length must be between 8 and 20 characters"));
+  if (isNaN(length) || length < 8 || length > 20) {
+    alert("Please enter a valid password length between 8 and 20 characters.");
+    return;
+  }
+
+  var includeLowercase = confirm("Include lowercase characters");
+  var includeUppercase = confirm("Include uppercase characters");
+  var includeNumeric = confirm("Include numeric characters");
+  var includeSpecial = confirm("Include special characters");
+
+  var password = generatePassword(length, includeLowercase, includeUppercase, includeNumeric, includeSpecial);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
- //Add event listener to generate button
-generateBtn.addEventListener("click", generatePassword);
-
-// Function to generate password base on user based criteria
-function generatePassword() {
-  // Array types
-  var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
-  var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var numericChars = "0123456789";
-  var specialChars = "~!@#$%^&*()_+{}[]\|';:,.<>;"
-}
-
-// Varibales to store user choices
-var passwordLength = prompt ("Must be 8 to 12 characters):")
-
-if (passwordLength < 8 || passwordLength > 12 || isNaN(passwordLength)) {
-  alert("Please enter a valid password length between 8 and 128 characters.");
-  return error;
-}
-
-var includeLowercase = confirm("Include lowercase characters?");
-var includeUppercase = confirm("Include uppercase characters?");
-var includeNumeric = confirm("Include numeric characters?");
-var includeSpecial = confirm("Include special characters?");//
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
